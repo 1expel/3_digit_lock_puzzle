@@ -87,7 +87,7 @@
 
 # THE PUZZLE INSTANCE I USED
 
-image.png
+see image.png
 
 ## OUTPUT1
 
