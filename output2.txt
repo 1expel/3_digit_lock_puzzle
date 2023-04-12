@@ -1,0 +1,77 @@
+
+--- INPUT ---
+
+Invalid = [[4, 2, 8]]
+Well Placed = []
+Misplaced = [Hint([7, 1, 6], num_special=1), Hint([3, 0, 7], num_special=2), Hint([4, 8, 0]. num_special=1)]
+
+--- OUTPUT ---
+
+INPUTTED LOCK
+
+--- LOCK ---
+Code: ['', '', '']
+Valid Digits: {}
+Invalid Digits: [4, 2, 8]
+Well Placed Digits: []
+Misplaced Digits: [Hint(len: 3, special: 1, digits: [7, 1, 6]), Hint(len: 3, special: 2, digits: [3, 0, 7]), Hint(len: 3, special: 1, digits: [4, 8, 0])]  
+------------
+
+PERFORMING INTIAL CLEAN ON HINTS...
+
+-> 4 is in invalid list -> remove 4 from misplaced hint
+-> 8 is in invalid list -> remove 8 from misplaced hint
+
+--- LOCK ---
+Code: ['', '', '']
+Valid Digits: {}
+Invalid Digits: [4, 2, 8]
+Well Placed Digits: []
+Misplaced Digits: [Hint(len: 3, special: 1, digits: [7, 1, 6]), Hint(len: 3, special: 2, digits: [3, 0, 7]), Hint(len: 1, special: 1, digits: ['', '', 0])]
+------------
+
+EVALUATING HINTS... TRYING TO CRACK THE CODE...
+
+-> misplaced digit: 0 found to be special -> this digit is valid in the code in a unkown location...
+-> valid digit: 0 only has 1 remaining location it can be in the code -> must be in the code in location 0
+
+--- LOCK ---
+Code: [0, '', '']
+Valid Digits: {}
+Invalid Digits: [4, 2, 8]
+Well Placed Digits: []
+Misplaced Digits: [Hint(len: 3, special: 1, digits: [7, 1, 6]), Hint(len: 3, special: 2, digits: [3, 0, 7]), Hint(len: 1, special: 1, digits: ['', '', 0])]
+------------
+
+PERFORMING ITERATIVE CLEAN ON HINTS...
+
+-> 0 is in code already -> remove 0 from misplaced hint
+-> 0 is in code already -> remove 0 from misplaced hint
+-> dropping length 0 misplaced hint
+
+--- LOCK ---
+Code: [0, '', '']
+Valid Digits: {}
+Invalid Digits: [4, 2, 8]
+Well Placed Digits: []
+Misplaced Digits: [Hint(len: 3, special: 1, digits: [7, 1, 6]), Hint(len: 2, special: 1, digits: [3, '', 7])]
+------------
+
+EVALUATING HINTS... TRYING TO CRACK THE CODE...
+
+-> there was nothing to evaluate
+
+PERFORMING ITERATIVE CLEAN ON HINTS...
+
+-> there was nothing to clean
+
+COULD NOT FIND 1 SOLUTION... GENERATING ALL POSSIBLE SOLUTIONS...
+
+-> generating all 720 (10P3) possible codes
+-> using the cracked code digits to narrow down the 720 possible codes... 72 possbile codes remaining
+-> using the invalid digits to narrow down the 72 possible codes... 30 possbile codes remaining
+-> using the misplaced hints to narrow down the 30 possible codes... 4 possbile codes remaining
+
+THE 4 POSSIBLE CODES ARE...
+
+-> [(0, 3, 1), (0, 6, 3), (0, 7, 5), (0, 7, 9)]

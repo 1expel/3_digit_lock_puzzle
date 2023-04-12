@@ -1,0 +1,108 @@
+
+--- INPUT ---
+
+Invalid = []
+Well Placed = [Hint([7, 8, 3], num_special=1)]
+Misplaced = [Hint([7, 1, 6], num_special=1), Hint([3, 0, 7], num_special=2)]
+
+--- OUTPUT ---
+
+INPUTTED LOCK
+
+--- LOCK ---
+Code: ['', '', '']
+Valid Digits: {}
+Invalid Digits: []
+Well Placed Digits: [Hint(len: 3, special: 1, digits: [7, 8, 3])]
+Misplaced Digits: [Hint(len: 3, special: 1, digits: [7, 1, 6]), Hint(len: 3, special: 2, digits: [3, 0, 7])]    
+------------
+
+PERFORMING INTIAL CLEAN ON HINTS...
+
+-> digit: 7 appears in the same location in a well placed hint and misplaced hint -> 7 is invalid
+-> 7 is in invalid list -> remove 7 from well placed hint
+-> 7 is in invalid list -> remove 7 from misplaced hint
+-> 7 is in invalid list -> remove 7 from misplaced hint
+
+--- LOCK ---
+Code: ['', '', '']
+Valid Digits: {}
+Invalid Digits: [7]
+Well Placed Digits: [Hint(len: 2, special: 1, digits: ['', 8, 3])]
+Misplaced Digits: [Hint(len: 2, special: 1, digits: ['', 1, 6]), Hint(len: 2, special: 2, digits: [3, 0, ''])]  
+------------
+
+EVALUATING HINTS... TRYING TO CRACK THE CODE...
+
+-> misplaced digit: 3 found to be special and found in well placed -> must be in the code in location 2
+-> misplaced digit: 0 found to be special -> this digit is valid in the code in a unkown location...
+-> valid digit: 0 only has 1 remaining location it can be in the code -> must be in the code in location 0      
+
+--- LOCK ---
+Code: [0, '', 3]
+Valid Digits: {}
+Invalid Digits: [7]
+Well Placed Digits: [Hint(len: 2, special: 1, digits: ['', 8, 3])]
+Misplaced Digits: [Hint(len: 2, special: 1, digits: ['', 1, 6]), Hint(len: 2, special: 2, digits: [3, 0, ''])]  
+------------
+
+PERFORMING ITERATIVE CLEAN ON HINTS...
+
+-> 3 is in code already -> remove 3 from well placed hint
+-> 3 is in code already -> remove 3 from misplaced hint
+-> 0 is in code already -> remove 0 from misplaced hint
+-> num_special == 0 -> adding digits to invalid and dropping hint: Hint(len: 1, special: 0, digits: ['', 8, ''])
+-> dropping length 0 misplaced hint
+
+--- LOCK ---
+Code: [0, '', 3]
+Valid Digits: {}
+Invalid Digits: [7, 8]
+Well Placed Digits: []
+Misplaced Digits: [Hint(len: 2, special: 1, digits: ['', 1, 6])]
+------------
+
+EVALUATING HINTS... TRYING TO CRACK THE CODE...
+
+-> there was nothing to evaluate
+
+PERFORMING ITERATIVE CLEAN ON HINTS...
+
+-> misplaced digit: 1 is misplaced in every remaining empty index in the code -> 1 is invalid
+-> 1 is in invalid list -> remove 1 from misplaced hint
+
+--- LOCK ---
+Code: [0, '', 3]
+Valid Digits: {}
+Invalid Digits: [7, 8, 1]
+Well Placed Digits: []
+Misplaced Digits: [Hint(len: 1, special: 1, digits: ['', '', 6])]
+------------
+
+EVALUATING HINTS... TRYING TO CRACK THE CODE...
+
+-> misplaced digit: 6 found to be special -> this digit is valid in the code in a unkown location...
+-> valid digit: 6 only has 1 remaining location it can be in the code -> must be in the code in location 1
+
+--- LOCK ---
+Code: [0, 6, 3]
+Valid Digits: {}
+Invalid Digits: [7, 8, 1]
+Well Placed Digits: []
+Misplaced Digits: [Hint(len: 1, special: 1, digits: ['', '', 6])]
+------------
+
+PERFORMING ITERATIVE CLEAN ON HINTS...
+
+-> 6 is in code already -> remove 6 from misplaced hint
+-> dropping length 0 misplaced hint
+
+--- LOCK ---
+Code: [0, 6, 3]
+Valid Digits: {}
+Invalid Digits: [7, 8, 1]
+Well Placed Digits: []
+Misplaced Digits: []
+------------
+
+THE CODE HAS BEEN CRACKED... THE CODE IS: [0, 6, 3]
